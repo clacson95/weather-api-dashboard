@@ -4,7 +4,7 @@
 This application is a weather dashboard that utilizes an API to display weather-based information, depending on the city.
 
 This application is deployed with **GitHub Pages**:
-## [Deployed Application]()
+### [Deployed Application]()
 
 ## Table of Contents
 * [Demo](#demo)
