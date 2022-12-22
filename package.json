@@ -1,0 +1,23 @@
+{
+  "name": "weather-api-dashboard",
+  "version": "1.0.0",
+  "description": "## Description This application is a weather dashboard that utilizes an API to display weather-based information, depending on the city.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clacson95/weather-api-dashboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clacson95/weather-api-dashboard/issues"
+  },
+  "homepage": "https://github.com/clacson95/weather-api-dashboard#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.3"
+  }
+}
