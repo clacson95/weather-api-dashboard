@@ -1,8 +1,6 @@
 
 const apiKey = "e1838e4144e827f98e3f73fb152977c7";
 
-const forecast0 = document.querySelector("#calendar");
-
 
 var today = moment();
 
@@ -121,7 +119,7 @@ function showWeatherData(city, data) {
 
 function showForecast(data) {
 
-    
+
     // day 1  
     
     var icon = data.daily[0].weather[0].icon;
