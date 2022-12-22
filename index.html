@@ -9,80 +9,140 @@
     <!-- stylesheets -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href="assets/css/style.css">
+
+    <!-- scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src='./assets/js/script.js'></script>
+
     <title>Dashboard</title>
 </head>
 
 
 <body class="bg-light">
     
-
-    <div id="hero" class="p-3 mb-2 bg-warning">
-        <p id="title" class="container-sm fs-1 text-center p-3 mb-2 bg-dark text-white">
+    
+    <div id="hero" class="p-3 mb-2 bg-warning ">
+        <p id="title" class="container-sm fs-1 text-center py-3 mt-5 mb-3 bg-dark text-white rounded-5"
+        style="width: 30%">
             Weather Dashboard
         </p>
+        <p id="time" class="fs-3 text-center my-auto"></p>
     </div>
 
 
-    <div id="dashboard" class="container-lg bg-info p-5 mt-5">
+    <div id="dashboard" class="bg-danger p-2 my-4 text-center">
         
+        <!-- previous search -->
+        <button id="previousCity" type="button" class="btn btn-info" onclick="previousCity()">previous search</button>
 
-        <div class="card">
+        <!-- data for today's weather -->
+        <div class="card bg-dark text-center text-white mb-5 mt-2 mx-auto" style="width:50%">
         
-            <div id="search" class="">
-                <input>
-                <button></button>
+            <!-- search-input and button to submit a city -->
+            <div id="search" class="" style="width:100%">
+                <input type="text" class="rounded-5 m-2 text-center" placeholder="Search">
+                <button type="button" class="btn btn-primary" onclick="getCity()"><img src="./assets/images/search.svg"></button>
             </div>
+
+            <!-- today's date -->
+            <div id="forecast0"></div>
+
+            <!-- name of city, to match the input above -->
+            <h2 class="city"></h2>
+
+            <!-- temperature in the city -->
+            <h1 class="temp"></h1>
+
+            <!-- weather icon + description -->
+            <div class="flex">
+                <img src="http://openweathermap.org/img/wn/04d.png" alt="current weather" class="icon" />
+                <div class="description"></div>
+            </div>
+
+            <!-- humidity -->
+            <div class="humidity"></div>
+
+            <!-- wind -->
+            <div class="wind"></div>
+
+            <!-- UV index -->
+            <div class="uvindex"></div>
 
         </div>
 
 
         <!-- 5-day forecast -->
-        <div id="forecast" class="container bg-secondary text-center">
+        <div class="container text-center my-4" style="max-width: 100%">
             
             <div class="row">
 
                 <!-- today +1 -->
-                <div class="card col" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                <div class="col">
+                    <div class="card bg-dark text-center text-white" style="width: 16rem">
+                        <div class="card-body">
+                            <div id="forecast1">date</div>
+                            <img src="http://openweathermap.org/img/wn/04d.png" alt="forecast weather" id="forecastIcon1" />
+                            <h3 id="forecastTemp1"></h3>
+                            <div id="forecastHumidity1">Humidity:</div>
+                            <div id="forecastWind1">Wind speed:</div>
+                        </div>
                     </div>
                 </div>
+                
 
                 <!-- today +2 -->
-                <div class="card col" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                <div class="col">
+                    <div class="card bg-dark text-center text-white" style="width: 16rem">
+                        <div class="card-body">
+                            <div id="forecast1">date</div>
+                            <img src="http://openweathermap.org/img/wn/04d.png" alt="forecast weather" id="forecastIcon2" />
+                            <h3 id="forecastTemp2"></h3>
+                            <div id="forecastHumidity2">Humidity:</div>
+                            <div id="forecastWind2">Wind speed:</div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- today +3 -->
-                <div class="card col" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                <div class="col">
+                    <div class="card bg-dark text-center text-white" style="width: 16rem">
+                        <div class="card-body">
+                            <div id="forecast1">date</div>
+                            <img src="http://openweathermap.org/img/wn/04d.png" alt="forecast weather" id="forecastIcon3" />
+                            <h3 id="forecastTemp3"></h3>
+                            <div id="forecastHumidity3">Humidity:</div>
+                            <div id="forecastWind3">Wind speed:</div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- today +4 -->
-                <div class="card col" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                <div class="col">
+                    <div class="card bg-dark text-center text-white" style="width: 16rem">
+                        <div class="card-body">
+                            <div id="forecast1">date</div>
+                            <img src="http://openweathermap.org/img/wn/04d.png" alt="forecast weather" id="forecastIcon4" />
+                            <h3 id="forecastTemp4"></h3>
+                            <div id="forecastHumidity4">Humidity:</div>
+                            <div id="forecastWind4">Wind speed:</div>
+                        </div>
                     </div>
                 </div>
-                
+
                 <!-- today +5 -->
-                <div class="card col" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                <div class="col">
+                    <div class="card bg-dark text-center text-white" style="width: 16rem">
+                        <div class="card-body">
+                            <div id="forecast1">date</div>
+                            <img src="http://openweathermap.org/img/wn/04d.png" alt="forecast weather" id="forecastIcon5" />
+                            <h3 id="forecastTemp5"></h3>
+                            <div id="forecastHumidity5">Humidity:</div>
+                            <div id="forecastWind5">Wind speed:</div>
+                        </div>
                     </div>
                 </div>
 
@@ -90,19 +150,7 @@
 
           </div>
 
-
     </div>
-
-
-
-
-
-
-    <!-- scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://kit.fontawesome.com/901a29e692.js" crossorigin="anonymous"></script>
-    <script src="assets/js/script.js"></script>
 
 </body>
 
