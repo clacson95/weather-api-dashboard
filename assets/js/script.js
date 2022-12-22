@@ -37,22 +37,21 @@ calendar();
 
 
 
-
 function getCity() {
 
     let city = document.querySelector("input").value;
    
-
-       fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`).then(res => res.json()).then(data => {
-       
-       localStorage.setItem('previousCity', localStorage.getItem('currentCity'));
-       localStorage.setItem('currentCity', city);
-       getWeatherData(data);
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`).then(res => res.json()).then(data => {
+    
+    localStorage.setItem('previousCity', localStorage.getItem('currentCity'));
+    localStorage.setItem('currentCity', city);
+    getWeatherData(data);
        
 })
 }
 
 function previousCity() {
+
     var city = localStorage.getItem('previousCity');
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`).then(res => res.json()).then(data => {
@@ -67,16 +66,15 @@ function previousCity() {
 
 function getWeatherData (data) {
 
-       let latitude = data.coord.lat
-       let longitude = data.coord.lon
+    let latitude = data.coord.lat
+    let longitude = data.coord.lon
+    let city = document.querySelector("input").value;
 
-       let city = document.querySelector("input").value;
-    
-       fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=imperial&appid=${apiKey}`).then(res => res.json()).then(data => {
-       console.log(data)
-       showWeatherData(city, data);
-       showForecast(data);
-       })
+    fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=imperial&appid=${apiKey}`).then(res => res.json()).then(data => {
+    console.log(data)
+    showWeatherData(city, data);
+    showForecast(data);
+    })
    }
 
 
@@ -123,82 +121,83 @@ function showWeatherData(city, data) {
 
 function showForecast(data) {
 
+    
     // day 1  
     
-        var icon = data.daily[0].weather[0].icon;
-        var temp = data.daily[0].temp.day;
-        var humidity = data.daily[0].humidity;
-        var wind_speed = data.daily[0].wind_speed;
-        
-        document.querySelector("#forecastIcon1").src = "http://openweathermap.org/img/wn/" + icon + ".png";
-
-        document.querySelector("#forecastTemp1").innerText = temp + "°F";
-
-        document.querySelector("#forecastHumidity1").innerText = "Humidity: " + humidity + "%";
-
-        document.querySelector("#forecastWind1").innerText = "Wind: " + wind_speed + "mph";
-                  
-        
-    // day 2
+    var icon = data.daily[0].weather[0].icon;
+    var temp = data.daily[0].temp.day;
+    var humidity = data.daily[0].humidity;
+    var wind_speed = data.daily[0].wind_speed;
     
-        var temp = data.daily[1].temp.day;
-        var humidity = data.daily[1].humidity;
-        var wind_speed = data.daily[1].wind_speed;
-        var icon = data.daily[1].weather[0].icon;
+    document.querySelector("#forecastIcon1").src = "http://openweathermap.org/img/wn/" + icon + ".png";
 
-        document.querySelector("#forecastIcon2").src = "http://openweathermap.org/img/wn/" + icon + ".png";
+    document.querySelector("#forecastTemp1").innerText = temp + "°F";
 
-        document.querySelector("#forecastTemp2").innerText = temp + "°F";
+    document.querySelector("#forecastHumidity1").innerText = "Humidity: " + humidity + "%";
 
-        document.querySelector("#forecastHumidity2").innerText = "Humidity: " + humidity + "%";
-
-        document.querySelector("#forecastWind2").innerText = "Wind: " + wind_speed + "mph";
+    document.querySelector("#forecastWind1").innerText = "Wind: " + wind_speed + "mph";
                 
-        
-    // day 3 
+    
+    // day 2
+
+    var temp = data.daily[1].temp.day;
+    var humidity = data.daily[1].humidity;
+    var wind_speed = data.daily[1].wind_speed;
+    var icon = data.daily[1].weather[0].icon;
+
+    document.querySelector("#forecastIcon2").src = "http://openweathermap.org/img/wn/" + icon + ".png";
+
+    document.querySelector("#forecastTemp2").innerText = temp + "°F";
+
+    document.querySelector("#forecastHumidity2").innerText = "Humidity: " + humidity + "%";
+
+    document.querySelector("#forecastWind2").innerText = "Wind: " + wind_speed + "mph";
             
-        var temp = data.daily[2].temp.day;
-        var humidity = data.daily[2].humidity;
-        var wind_speed = data.daily[2].wind_speed;
-        var icon = data.daily[2].weather[0].icon;
     
-        document.querySelector("#forecastIcon3").src = "http://openweathermap.org/img/wn/" + icon + ".png";
+    // day 3 
+        
+    var temp = data.daily[2].temp.day;
+    var humidity = data.daily[2].humidity;
+    var wind_speed = data.daily[2].wind_speed;
+    var icon = data.daily[2].weather[0].icon;
 
-        document.querySelector("#forecastTemp3").innerText = temp + "°F";
+    document.querySelector("#forecastIcon3").src = "http://openweathermap.org/img/wn/" + icon + ".png";
 
-        document.querySelector("#forecastHumidity3").innerText = "Humidity: " + humidity + "%";
+    document.querySelector("#forecastTemp3").innerText = temp + "°F";
 
-        document.querySelector("#forecastWind3").innerText = "Wind: " + wind_speed + "mph";
-   
-    
+    document.querySelector("#forecastHumidity3").innerText = "Humidity: " + humidity + "%";
+
+    document.querySelector("#forecastWind3").innerText = "Wind: " + wind_speed + "mph";
+
+
     // day 4
-    
-        var temp = data.daily[3].temp.day;
-        var humidity = data.daily[3].humidity;
-        var wind_speed = data.daily[3].wind_speed;
-        var icon = data.daily[3].weather[0].icon;
-    
-        document.querySelector("#forecastIcon4").src = "http://openweathermap.org/img/wn/" + icon + ".png";
 
-        document.querySelector("#forecastTemp4").innerText = temp + "°F";
+    var temp = data.daily[3].temp.day;
+    var humidity = data.daily[3].humidity;
+    var wind_speed = data.daily[3].wind_speed;
+    var icon = data.daily[3].weather[0].icon;
 
-        document.querySelector("#forecastHumidity4").innerText = "Humidity: " + humidity + "%";
+    document.querySelector("#forecastIcon4").src = "http://openweathermap.org/img/wn/" + icon + ".png";
 
-        document.querySelector("#forecastWind4").innerText = "Wind: " + wind_speed + "mph";
+    document.querySelector("#forecastTemp4").innerText = temp + "°F";
 
-    
+    document.querySelector("#forecastHumidity4").innerText = "Humidity: " + humidity + "%";
+
+    document.querySelector("#forecastWind4").innerText = "Wind: " + wind_speed + "mph";
+
+
     // day 5
-    
-        var temp = data.daily[4].temp.day;
-        var humidity = data.daily[4].humidity;
-        var wind_speed = data.daily[4].wind_speed;
-        var icon = data.daily[4].weather[0].icon;
 
-        document.querySelector("#forecastIcon5").src = "http://openweathermap.org/img/wn/" + icon + ".png";
+    var temp = data.daily[4].temp.day;
+    var humidity = data.daily[4].humidity;
+    var wind_speed = data.daily[4].wind_speed;
+    var icon = data.daily[4].weather[0].icon;
 
-        document.querySelector("#forecastTemp5").innerText = temp + "°F";
+    document.querySelector("#forecastIcon5").src = "http://openweathermap.org/img/wn/" + icon + ".png";
 
-        document.querySelector("#forecastHumidity5").innerText = "Humidity: " + humidity + "%";
+    document.querySelector("#forecastTemp5").innerText = temp + "°F";
 
-        document.querySelector("#forecastWind5").innerText = "Wind: " + wind_speed + "mph";
+    document.querySelector("#forecastHumidity5").innerText = "Humidity: " + humidity + "%";
+
+    document.querySelector("#forecastWind5").innerText = "Wind: " + wind_speed + "mph";
 }
