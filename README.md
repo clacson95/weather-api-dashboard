@@ -3,6 +3,9 @@
 ## Description
 This application is a weather dashboard that utilizes an API to display weather-based information, depending on the city.
 
+This application is deployed with **GitHub Pages**:
+## [Deployed Application]()
+
 ## Table of Contents
 * [Demo](#demo)
 * [Screenshots](#screenshots)
@@ -13,7 +16,7 @@ This application is a weather dashboard that utilizes an API to display weather-
 * [Questions](#questions)
 
 ## Demo
-### [Click here to watch a walkthrough video!](https://youtu.be/Fouyajb_YxU)
+### [Click here to watch a walkthrough video!]()
 
 ## Usage
 
